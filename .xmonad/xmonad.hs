@@ -20,7 +20,7 @@ import Graphics.X11.ExtraTypes.XF86
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 myTerminal = "xfce4-terminal"
-myBorderWidth = 0
+myBorderWidth = 1
 
 -- Custom Keyboard Shortcuts
 myKeys (XConfig {XMonad.modMask = modm}) = M.fromList $
@@ -47,7 +47,7 @@ myManageHook = composeAll
     , className =? "Heroes of Newerth" --> doFullFloat
     , resource  =? "desktop_window"    --> doIgnore
     , resource  =? "kdesktop"          --> doIgnore
-    , isFullscreen                     --> doFullFloat
+    {-, isFullscreen                     --> doFullFloat-}
     ]
 
 -- Skype Layout
