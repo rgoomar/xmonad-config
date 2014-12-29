@@ -44,10 +44,10 @@ myManageHook = composeAll
     , className =? "Xfrun4"            --> doFloat
     , className =? "Skype"             --> doShift "4"
     , className =? "Heroes of Newerth" --> doShift "5"
-    , className =? "Heroes of Newerth" --> doFloat
+    , className =? "Heroes of Newerth" --> doFullFloat
     , resource  =? "desktop_window"    --> doIgnore
     , resource  =? "kdesktop"          --> doIgnore
-    {-, isFullscreen                     --> doFullFloat-}
+    , isFullscreen                     --> doFullFloat
     ]
 
 -- Skype Layout
@@ -55,7 +55,7 @@ myIMLayout = withIM (1%6) skype Grid
     where
       skype = And (ClassName "Skype") (Role "")
 -- Custom Layouts
-myLayout = onWorkspace "4" myIMLayout $ maximize (tiled) ||| Mirror tiled ||| noBorders Full
+myLayout = onWorkspace "4" myIMLayout $ smartBorders $ maximize (tiled) ||| Mirror tiled ||| noBorders Full
   where
       tiled   = Tall nmaster delta ratio
       nmaster = 1
